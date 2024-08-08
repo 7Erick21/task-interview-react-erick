@@ -5,6 +5,7 @@ export interface LisProductsRequest {
   category?: string;
   page: number;
   limit: number;
+  isPagination?: boolean;
 }
 
 export interface LisProductsResponse {

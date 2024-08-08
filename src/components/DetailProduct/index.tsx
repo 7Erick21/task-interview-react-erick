@@ -10,7 +10,7 @@ interface DetailProductProps {
 }
 
 const style: SxProps = {
-  maxWidth: 500,
+  // maxWidth: 500,
   borderRadius: 2,
   boxShadow: 24,
   p: 4,

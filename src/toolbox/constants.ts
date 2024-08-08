@@ -10,4 +10,4 @@ export const categories = [
   'Beverages',
 ];
 
-export const pageSize = 10;
+export const pageSize = 20;

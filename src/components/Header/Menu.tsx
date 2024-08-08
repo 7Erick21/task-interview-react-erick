@@ -1,7 +1,9 @@
 import { IconButton, MenuItem, Menu as MuiMenu } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { FC, useState } from 'react';
-import { categories } from '../../toolbox';
+import { categories, pageSize } from '../../toolbox';
+import { useListProducts } from '../../hooks';
+import { useProductsStore } from '../../stores';
 
 const ITEM_HEIGHT = 48;
 
@@ -13,6 +15,21 @@ export const Menu: FC = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const { mutate: filterCategoryProducts } = useListProducts();
+
+  const { searchProduct } = useProductsStore();
+
+  const handleCategory = (category: string) => {
+    if (category === 'All')
+      filterCategoryProducts({ page: 0, limit: pageSize, q: searchProduct });
+    else
+      filterCategoryProducts({
+        page: 0,
+        limit: pageSize,
+        category,
+        q: searchProduct,
+      });
   };
 
   return (
@@ -42,13 +59,13 @@ export const Menu: FC = () => {
           },
         }}
       >
-        {categories.map((option) => (
+        {categories.map((category) => (
           <MenuItem
-            key={option}
-            selected={option === 'Pyxis'}
-            onClick={handleClose}
+            key={category}
+            selected={category === 'Pyxis'}
+            onClick={() => handleCategory(category)}
           >
-            {option}
+            {category}
           </MenuItem>
         ))}
       </MuiMenu>

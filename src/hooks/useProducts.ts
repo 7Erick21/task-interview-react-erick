@@ -26,7 +26,7 @@ export const useListProducts = () => {
         response.json()
       );
     },
-    onSuccess: (resp, { category, q, page }) => {
+    onSuccess: (resp, { category, q, page, isPagination }) => {
       const newProductsArray: Product[] = resp.products.map((product) => {
         const cartProduct = carts.items.filter(
           (item) => item.id === product.id
@@ -37,15 +37,16 @@ export const useListProducts = () => {
         return product;
       });
 
-      newProduct(
-        {
-          ...resp,
-          page: page + 1,
-          products: newProductsArray,
-        },
-        q,
-        category
-      );
+      if (!isPagination)
+        newProduct(
+          {
+            ...resp,
+            page: page + 1,
+            products: newProductsArray,
+          },
+          q,
+          category
+        );
     },
   });
 };

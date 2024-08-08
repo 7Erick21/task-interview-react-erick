@@ -1,5 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, createTheme, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { Box, ThemeProvider } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { FC, ReactNode } from 'react';
 import { SearchAppBar, Sidebar } from '../components';
@@ -12,13 +13,14 @@ interface LayoutProps {
 export const Layout: FC<LayoutProps> = ({ children }) => {
   const theme = createTheme();
   const { carts } = useCarsStore();
+
   const client = new QueryClient({
     defaultOptions: { queries: { refetchOnWindowFocus: false } },
   });
 
   return (
-    <QueryClientProvider client={client}>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={client}>
         <CssBaseline />
         <Box height='100vh' display='flex' flexDirection='column'>
           <SearchAppBar
@@ -35,7 +37,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
             {children}
           </Box>
         </Box>
-      </ThemeProvider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };

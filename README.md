@@ -1,80 +1,39 @@
 ```
-Hi! We're happy you opened this file, not everyone does!
-To let us know you did 😊 
-```
+# Mi Proyecto React con MUI, Zustand y TanStack Query
 
-# React Interview Assignment
+Este repositorio contiene mi proyecto web en React que utiliza las siguientes tecnologías:
 
-## Welcome!
+- **Material-UI (MUI)**: Librería de componentes para crear una interfaz de usuario atractiva y funcional.
+- **Zustand**: Manejador de estados para gestionar variables globales en la aplicación.
+- **TanStack Query**: Biblioteca para manejar las respuestas de las APIs y realizar consultas de manera eficiente.
 
-We're excited to see your coding skills! This repository contains a series of challenges designed to evaluate your abilities. **Don't worry about completing everything**; focus on delivering quality work.
+## Estructura de Carpetas
 
-### Timeline
+Organicé mi proyecto en las siguientes carpetas:
 
-You have **1 week** to complete as much as you can. We understand you might have other commitments, so work at your own pace. Remember, we're looking at the **quality of your work**, not the quantity.
+- **components**: Aquí se encuentran los componentes reutilizables, como botones, tarjetas, etc.
+- **hooks**: Contiene los hooks personalizados para el manejo de estados con Zustand.
+- **stores**: Almacena los stores globales de Zustand para gestionar la data de productos y el carrito.
+- **views**: Solo hay una vista en mi proyecto, que es la lista de productos.
+- **toolbox**: En esta carpeta, guardo todas las herramientas adicionales, como constantes, interfaces, enums y helpers.
 
-### How to Submit
+## Instalación
 
-Fork this repository and work on it as if it's a real-world project. When you're done, just share your fork with us!
+1. Clona este repositorio.
+2. Ejecuta `npm install` para instalar las dependencias.
+3. Luego, puedes iniciar la aplicación con `npm start`.
 
-### What We'll Be Looking For
+## Uso
 
-Your work will be evaluated on:
+- Navega a la vista de lista de productos para ver los productos disponibles.
+- Agrega productos al carrito y gestiónalos desde el store global.
 
-- **Code Quality**
-- **Design Patterns**
-- **Project Structure**
-- **Work Quality** (commits, branches, workflow, tests, etc.)
-- **Documentation**
+## Contribución
 
-### A Note on Using AI Tools
+¡Siéntete libre de contribuir! Puedes abrir un PR o reportar problemas en la sección de *Issues*.
 
-We welcome the use of AI tools like GPT for inspiration and debugging. However, we want to see **your personal touch** and understand your **thought process**. Use these tools as support, but ensure the final work represents **your skills and creativity**.
+## Recursos Adicionales
 
-### Getting Started
-
-You can choose to tackle any number of challenges. **Feel free to make your own decisions and assumptions**, and document them as you would in a real project.
-
----
-
-## Project Overview: FreshCart Market
-
-Your task is to build the customer-facing part of **FreshCart Market**, a simple grocery e-commerce website. Focus on features like product browsing, adding to cart, and checkout. You can ignore admin functionalities and user authentication for simplicity.
-
-### Challenges
-
-#### 1. Available Products
-
-A junior developer started the project but didn't finish implementing pagination on the frontend. Your tasks are:
-- Refactor the code for maintainability.
-- Implement pagination with infinite scroll.
-
-#### 2. Categories and Search
-
-Implement a search bar and category filters:
-- Allow users to search and filter products in real-time.
-
-#### 3. Add to Cart
-
-Enhance the add-to-cart functionality:
-- Ensure the cart updates correctly and quickly.
-- Improve user experience despite a slow backend.
-
-#### 4. Checkout Phase
-
-Implement the checkout process, which includes:
-- Cart summary and final price
-- Delivery address and slot selection
-- Payment method
-- Order confirmation
-
-### Documentation
-
-Please document your code and any decisions or assumptions made during the implementation. This will help us understand your thought process.
-
-**💡Remember to override this readme**
-
-
----
-
-Happy coding! We can't wait to see what you come up with. 🚀👩‍💻👨‍💻
+- Material-UI
+- Zustand
+- TanStack Query

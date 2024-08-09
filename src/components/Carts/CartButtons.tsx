@@ -6,9 +6,10 @@ import { useCarsStore, useProductsStore } from '../../stores';
 
 interface CartButtonsProps {
   product: Product;
+  disabled: boolean;
 }
 
-export const CartButtons: FC<CartButtonsProps> = ({ product }) => {
+export const CartButtons: FC<CartButtonsProps> = ({ product, disabled }) => {
   const { setCarts, carts, removeItem } = useCarsStore();
   const { newProduct, products } = useProductsStore();
 
@@ -59,7 +60,7 @@ export const CartButtons: FC<CartButtonsProps> = ({ product }) => {
       alignItems='center'
     >
       <IconButton
-        disabled={itemInCart === 0}
+        disabled={itemInCart === 0 || disabled}
         aria-label='delete'
         size='small'
         onClick={() => handleAddCart(-1)}
@@ -73,13 +74,19 @@ export const CartButtons: FC<CartButtonsProps> = ({ product }) => {
 
       <IconButton
         aria-label='add'
+        disabled={disabled}
         size='small'
         onClick={() => handleAddCart(1)}
       >
         <Add fontSize='small' />
       </IconButton>
 
-      <IconButton aria-label='add' size='small' onClick={handleRemoveProduct}>
+      <IconButton
+        aria-label='add'
+        size='small'
+        disabled={disabled}
+        onClick={handleRemoveProduct}
+      >
         <DeleteOutline fontSize='small' />
       </IconButton>
     </Box>

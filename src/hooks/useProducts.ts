@@ -28,11 +28,9 @@ export const useListProducts = () => {
     },
     onSuccess: (resp, { category, q, page, isPagination }) => {
       const newProductsArray: Product[] = resp.products.map((product) => {
-        const cartProduct = carts.items.filter(
-          (item) => item.id === product.id
-        );
-        if (cartProduct.length > 0) {
-          return { ...product, itemInCart: cartProduct.length };
+        const cartProduct = carts.items.find((item) => item.id === product.id);
+        if (cartProduct) {
+          return { ...product, itemInCart: cartProduct.itemInCart };
         }
         return { ...product, itemInCart: 0 };
       });

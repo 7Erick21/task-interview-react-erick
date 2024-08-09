@@ -10,6 +10,7 @@ export const Carts: FC = () => {
 
   const [preferenceId, setPreferenceId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   initMercadoPago(publicApiPaymentMarket, {
     locale: 'es-PE',
@@ -39,16 +40,22 @@ export const Carts: FC = () => {
   };
 
   const handleBuy = async () => {
+    setDisabled(true);
     const id = await createPreference();
 
     if (id) setPreferenceId(id);
   };
 
   return (
-    <Box display='flex' flexDirection='column' gap={2} p={2}>
-      <Typography variant='h6'>
-        Total: {Math.round(carts.totalPrice)}
-      </Typography>
+    <Box
+      display='flex'
+      flexDirection='column'
+      gap={2}
+      p={2}
+      maxWidth='600px'
+      width='max-content'
+    >
+      <Typography variant='h6'>Total: {carts.totalPrice.toFixed(2)}</Typography>
       {carts.items.map((product) => {
         const { id, name, imageUrl, price, itemInCart } = product;
 
@@ -65,7 +72,7 @@ export const Carts: FC = () => {
               <Typography variant='body2' color='text.secondary'>
                 price: {price}
               </Typography>
-              <CartButtons product={product} />
+              <CartButtons product={product} disabled={disabled} />
               <Typography variant='body2' color='text.secondary'>
                 total: {itemInCart * price}
               </Typography>
@@ -73,13 +80,28 @@ export const Carts: FC = () => {
           </Box>
         );
       })}
+
+      {carts.items.length === 0 && (
+        <Box display='flex' gap={2} alignItems='center'>
+          <Typography variant='h6'>
+            No tienes productos en el carrito
+          </Typography>
+        </Box>
+      )}
+
       {!preferenceId && (
         <Button disabled={loading} onClick={handleBuy} variant='contained'>
           comprar
         </Button>
       )}
       {preferenceId && (
-        <Wallet initialization={{ preferenceId: preferenceId }} />
+        <Wallet
+          initialization={{ preferenceId: preferenceId }}
+          onReady={() => {
+            setDisabled(true);
+            console.log('first');
+          }}
+        />
       )}
     </Box>
   );

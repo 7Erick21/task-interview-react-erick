@@ -3,6 +3,7 @@ import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useCarsStore } from '../../stores';
 import { Box, Button, CardContent, CardMedia, Typography } from '@mui/material';
 import { publicApi, publicApiPaymentMarket } from '../../toolbox';
+import { CartButtons } from './CartButtons';
 
 export const Carts: FC = () => {
   const { carts } = useCarsStore();
@@ -45,23 +46,33 @@ export const Carts: FC = () => {
 
   return (
     <Box display='flex' flexDirection='column' gap={2} p={2}>
-      <Typography variant='h6'>Total: {carts.totalPrice}</Typography>
-      {carts.items.map(({ id, name, imageUrl, price }) => (
-        <Box key={id} display='flex' gap={2} alignItems='center'>
-          <CardMedia component='img' height='150' image={imageUrl} />
-          <CardContent>
-            <Typography gutterBottom variant='h6' component='div'>
-              {name}
-            </Typography>
-            <Typography variant='body2' color='text.secondary'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            </Typography>
-            <Typography variant='body2' color='text.secondary'>
-              price: {price}
-            </Typography>
-          </CardContent>
-        </Box>
-      ))}
+      <Typography variant='h6'>
+        Total: {Math.round(carts.totalPrice)}
+      </Typography>
+      {carts.items.map((product) => {
+        const { id, name, imageUrl, price, itemInCart } = product;
+
+        return (
+          <Box key={id} display='flex' gap={2} alignItems='center'>
+            <CardMedia component='img' height='150' image={imageUrl} />
+            <CardContent>
+              <Typography gutterBottom variant='h6' component='div'>
+                {name}
+              </Typography>
+              <Typography variant='body2' color='text.secondary'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              </Typography>
+              <Typography variant='body2' color='text.secondary'>
+                price: {price}
+              </Typography>
+              <CartButtons product={product} />
+              <Typography variant='body2' color='text.secondary'>
+                total: {itemInCart * price}
+              </Typography>
+            </CardContent>
+          </Box>
+        );
+      })}
       {!preferenceId && (
         <Button disabled={loading} onClick={handleBuy} variant='contained'>
           comprar

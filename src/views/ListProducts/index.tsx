@@ -1,13 +1,12 @@
 import { FC, useEffect } from 'react';
 import { Box, CircularProgress, Grid, Typography } from '@mui/material';
 import { Card } from '../../components/Card';
-import { useAddCarts, useListProducts } from '../../hooks';
+import { useListProducts } from '../../hooks';
 import { useProductsStore } from '../../stores';
 import { pageSize } from '../../toolbox';
 
 export const ListProducts: FC = () => {
   const { mutate: listProducts, isPending } = useListProducts();
-  const { mutate: addCarts } = useAddCarts();
 
   const { products, newProduct, filterCategory, searchProduct } =
     useProductsStore();
@@ -35,10 +34,6 @@ export const ListProducts: FC = () => {
         },
       }
     );
-  };
-
-  const handleAddCart = (productId: number, quantity: number) => {
-    addCarts({ productId, quantity });
   };
 
   const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
@@ -74,15 +69,11 @@ export const ListProducts: FC = () => {
     >
       <Grid container spacing={2} p={2}>
         {products.products.map((product) => (
-          <Card
-            product={product}
-            onAdd={(productId) => handleAddCart(productId, 1)}
-            onRemove={(productId) => handleAddCart(productId, -1)}
-          />
+          <Card product={product} />
         ))}
         {isPending && (
           <Box
-            height='100%'
+            height='100px'
             display='flex'
             alignItems='center'
             justifyContent='center'
@@ -91,7 +82,7 @@ export const ListProducts: FC = () => {
             <CircularProgress value={25} />
           </Box>
         )}
-        {products.products.length === 0 && (
+        {!isPending && products.products.length === 0 && (
           <Box
             height='400px'
             display='flex'
@@ -103,13 +94,6 @@ export const ListProducts: FC = () => {
           </Box>
         )}
       </Grid>
-      {/* {products.products.length !== 0 && (
-        <Pagination
-          count={Math.round(products.total / pageSize)}
-          onChange={handlePagination}
-          page={products.page}
-        />
-      )} */}
     </Box>
   );
 };

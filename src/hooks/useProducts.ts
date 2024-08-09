@@ -34,7 +34,7 @@ export const useListProducts = () => {
         if (cartProduct.length > 0) {
           return { ...product, itemInCart: cartProduct.length };
         }
-        return product;
+        return { ...product, itemInCart: 0 };
       });
 
       if (!isPagination)

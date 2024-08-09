@@ -13,11 +13,9 @@ import { DetailProduct } from '../DetailProduct';
 
 interface CardProps {
   product: Product;
-  onAdd: (productId: number) => void;
-  onRemove: (productId: number) => void;
 }
 
-export const Card: FC<CardProps> = ({ product, onAdd, onRemove }) => {
+export const Card: FC<CardProps> = ({ product }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -50,7 +48,7 @@ export const Card: FC<CardProps> = ({ product, onAdd, onRemove }) => {
           aria-labelledby='alert-dialog-title'
           aria-describedby='alert-dialog-description'
         >
-          <DetailProduct product={product} onAdd={onAdd} onRemove={onRemove} />
+          <DetailProduct product={product} />
         </Dialog>
       </MuiCard>
     </Grid>

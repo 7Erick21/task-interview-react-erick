@@ -51,8 +51,14 @@ export const DetailProduct: FC<DetailProductProps> = ({ product }) => {
           justifyContent='space-between'
           flexGrow={1}
         >
+          <Typography gutterBottom variant='h6' component='div'>
+            {productDetail.name}
+          </Typography>
           <Typography variant='h6' component='div' mb={2}>
             Categoria: {productDetail.category}
+          </Typography>
+          <Typography variant='body2' color='text.secondary'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           </Typography>
           <Box display='flex' alignItems='center' gap={2}>
             <Typography component='div'>${productDetail.price}</Typography>

@@ -46,7 +46,7 @@ export const CartButtons: FC<CartButtonsProps> = ({ product, disabled }) => {
     newProduct({ ...products, products: newProducts });
 
     removeItem({
-      totalItems: carts.totalItems - 1,
+      totalItems: carts.totalItems - itemInCart,
       totalPrice: carts.totalPrice - itemInCart * price,
       items: carts.items.filter((item) => item.id !== id),
     });

@@ -70,11 +70,11 @@ export const Carts: FC = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                price: {price}
+                price: {price.toFixed(2)}
               </Typography>
               <CartButtons product={product} disabled={disabled} />
               <Typography variant='body2' color='text.secondary'>
-                total: {itemInCart * price}
+                total: {(itemInCart * price).toFixed(2)}
               </Typography>
             </CardContent>
           </Box>

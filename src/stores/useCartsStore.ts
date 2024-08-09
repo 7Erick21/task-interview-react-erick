@@ -49,7 +49,11 @@ export const useCarsStore = create<CarsStoreProps>((set, get) => ({
             return acc;
           }, [] as Product[]);
 
-          set({ carts: { ...newCarts, items: uniqueItems } });
+          const filterItemsCarts = uniqueItems.filter(
+            (items) => items.itemInCart !== 0
+          );
+
+          set({ carts: { ...newCarts, items: filterItemsCarts } });
 
           return {
             ...productStore,
@@ -87,6 +91,10 @@ export const useCarsStore = create<CarsStoreProps>((set, get) => ({
       return acc;
     }, [] as Product[]);
 
-    set({ carts: { ...newCarts, items: uniqueItems } });
+    const filterItemsCarts = uniqueItems.filter(
+      (items) => items.itemInCart !== 0
+    );
+
+    set({ carts: { ...newCarts, items: filterItemsCarts } });
   },
 }));

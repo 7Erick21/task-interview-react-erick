@@ -1,4 +1,3 @@
-```
 # Mi Proyecto React con MUI, Zustand y TanStack Query
 
 Este repositorio contiene mi proyecto web en React que utiliza las siguientes tecnologías:
@@ -30,7 +29,7 @@ Organicé mi proyecto en las siguientes carpetas:
 
 ## Contribución
 
-¡Siéntete libre de contribuir! Puedes abrir un PR o reportar problemas en la sección de *Issues*.
+¡Siéntete libre de contribuir! Puedes abrir un PR o reportar problemas en la sección de _Issues_.
 
 ## Recursos Adicionales
 

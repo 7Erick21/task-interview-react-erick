@@ -1,6 +1,6 @@
 {
   "name": "@erick-pineda/erick-propio-h2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "bin": "./bin/cli.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint a --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "tsc && vite build && vite preview"
+    "start": "tsc && vite build && vite preview",
+    "postinstall": "node ./bin/cli.js"
   },
   "repository": {
     "type": "git",

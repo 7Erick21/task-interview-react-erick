@@ -1,5 +1,5 @@
 {
-  "name": "@clon-react/react-clon",
+  "name": "@h2_demo/a-h2",
   "version": "0.0.0",
   "type": "module",
   "bin":"./bin/cli/js",

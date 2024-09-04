@@ -1,6 +1,6 @@
 {
-  "name": "@h2_demo/erick-h2",
-  "version": "0.0.0",
+  "name": "erick-propio",
+  "version": "0.0.1",
   "type": "module",
   "bin": "./bin/cli.js",
   "scripts": {
@@ -9,6 +9,14 @@
     "lint": "eslint a --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "tsc && vite build && vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/7Erick21/task-interview-react-erick"
+  },
+  "author":{
+    "name": "Erick Pineda",
+    "email": "pinedacuevaerick910@gmail.com"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",

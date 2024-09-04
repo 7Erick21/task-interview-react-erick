@@ -1,8 +1,8 @@
 {
-  "name": "@h2_demo/a-h2",
+  "name": "@react_base/demo",
   "version": "0.0.0",
   "type": "module",
-  "bin":"./bin/cli/js",
+  "bin": "./bin/cli.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

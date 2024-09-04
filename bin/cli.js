@@ -1,26 +1,29 @@
 #!/usr/bin/env node
+const { execSync } = require('child_process');
 
-const {execSync} = require('child_process');
-
-const runCommand = comand => {
-    try {
-        execSync(`${comand}`, {stdio: 'inherit'})
-    } catch (error) {
-        console.log(e, 'Fallo comando')
-        return false;
-        
-    }
-    return true;
-}
+const runCommand = command => {
+  try {
+    execSync(`${command}`, { stdio: 'inherit' });
+  } catch (e) {
+    console.error('Failed to execute ${command}', e);
+    return false;
+  }
+  return true;
+};
 
 const repoName = process.argv[2];
+const gitCheckoutCommand = `git clone --depth 1 https://github.com/hhimanshu/react-ts-starter ${repoName}`;
+const installDepsCommand = `cd ${repoName} && npm install`;
 
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/7Erick21/task-interview-react-erick ${repoName}`;
-const installDeps = `cd ${repoName} && npm install`;
+console.log(`Cloning the repository with name ${repoName}`);
+const checkedOut = runCommand(gitCheckoutCommand);
+if (!checkedOut) process.exit(-1);
 
-const ck = runCommand(gitCheckoutCommand);
+console.log(`Installing dependencies for ${repoName}`);
+const installedDeps = runCommand(installDepsCommand);
+if (!installedDeps) process.exit(-1);
 
-if(!ck) process.exit(-1);
-
-const install = runCommand(installDeps);
-if(!install) process.exit(-1)
+console.log(
+  'Congratulations! You are ready. Follow the following commands to start'
+);
+console.log(`cd ${repoName} && npm start`);

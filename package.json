@@ -1,5 +1,5 @@
 {
-  "name": "@react_base/demo",
+  "name": "@h2_demo/erick-h2",
   "version": "0.0.0",
   "type": "module",
   "bin": "./bin/cli.js",

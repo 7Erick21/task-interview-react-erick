@@ -15,7 +15,7 @@ const runCommand = comand => {
 
 const repoName = process.argv[2];
 
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/7Erick21/task-interview-react-erick.git ${repoName}`;
+const gitCheckoutCommand = `git clone --depth 1 https://github.com/7Erick21/task-interview-react-erick ${repoName}`;
 const installDeps = `cd ${repoName} && npm install`;
 
 const ck = runCommand(gitCheckoutCommand);

@@ -1,5 +1,5 @@
 {
-  "name": "erick-propio",
+  "name": "@erick-pineda/erick-propio-h2",
   "version": "0.0.1",
   "type": "module",
   "bin": "./bin/cli.js",
